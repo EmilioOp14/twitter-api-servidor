@@ -7,6 +7,25 @@ GET http://localhost:8080/api/v1/users/name?q=eo
 ### Obtener publicaciones por id
 GET http://localhost:8080/api/v1/publications/1
 
+### Registrar un nuevo usuario
+POST http://localhost:8080/auth/register
+Content-Type: application/json
+
+{
+	"username": "Rodrygo Goeeeeees",
+	"email": "ED",
+	"password": "Abcd",
+	"rol": "USER"
+}
+
+### Logearse
+POST http://localhost:8080/auth/login
+Content-Type: application/json
+
+{
+	"username": "Rodrygo Goeeeeees",
+	"password": "Abcd"
+}
 
 
 ### Insertar un nuevo jugador

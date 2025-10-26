@@ -1,5 +1,7 @@
 package org.vedruna.apitwitter1.persistance.repository;
 
+import java.util.Optional;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -10,6 +12,7 @@ import org.vedruna.apitwitter1.persistance.model.User;
 public interface UserRepository extends JpaRepository<User,Integer>{
 
     Page<User> findUserByUsernameStartingWith(String name, Pageable pageable);
+    Optional<User> findByUsername(String username);
 
 
 }
