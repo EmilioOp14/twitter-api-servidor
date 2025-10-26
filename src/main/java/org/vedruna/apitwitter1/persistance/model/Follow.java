@@ -21,17 +21,17 @@ public class Follow {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "follow_id")
-    private Integer followId;
+    Integer followId;
 
     // Usuario que sigue a otro
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "follower_id", nullable = false)
     @JsonBackReference
-    private User follower;
+    User follower;
 
     // Usuario que es seguido
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "following_id", nullable = false)
     @JsonBackReference
-    private User following;
+    User following;
 }

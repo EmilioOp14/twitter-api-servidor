@@ -1,7 +1,7 @@
 spring:
     application:
-        name: Examen
-        author: Joaquin Borrego Fernandez
+        name: ApiTwitter1
+        author: Emilio
 
     datasource:
         url: jdbc:mysql://localhost:3306/social_network?createDatabaseIfNotExist=true&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
