@@ -27,5 +27,13 @@ public class UserControllerImpl implements UserController{
                                 .map(simpleUserConverter::toDto)
                 );
     }
+
+    @Override
+    public ResponseEntity<Page<SimpleUserDto>> getUsersByNameStartingWith(String prefix, Pageable pageable) {
+        return ResponseEntity.ok(
+            userService.getUsersByNameStartingWith(prefix, pageable)
+                .map(f -> simpleUserConverter.toDto(f))
+        );
+    }
     
 }

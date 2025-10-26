@@ -7,5 +7,7 @@ import org.vedruna.apitwitter1.persistance.model.User;
 public interface UserService {
 
     Page<User> getAllUsers(Pageable pageable);
+
+    Page<User> getUsersByNameStartingWith(String name, Pageable pageable);
     
 }

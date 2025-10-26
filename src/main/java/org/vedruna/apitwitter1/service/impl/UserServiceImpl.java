@@ -25,5 +25,11 @@ public class UserServiceImpl implements UserService{
         log.info("Encontrados {} usuarios", users.getTotalElements());
         return users;
     }
+
+
+    @Override
+    public Page<User> getUsersByNameStartingWith(String name, Pageable pageable) {
+        return userRepository.findUserByUsernameStartingWith(name, pageable);
+    }
     
 }
