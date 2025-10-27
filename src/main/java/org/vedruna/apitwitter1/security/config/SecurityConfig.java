@@ -14,6 +14,7 @@ import org.vedruna.apitwitter1.security.jwt.JWTAuthenticationFilter;
 
 import static org.springframework.security.config.http.SessionCreationPolicy.STATELESS;
 
+
 @Configuration
 @EnableWebSecurity
 @RequiredArgsConstructor
@@ -32,10 +33,10 @@ public class SecurityConfig {
         .requestMatchers("/api/v1/auth/**").permitAll()
         .requestMatchers(HttpMethod.GET, "/api/v1/users/**").permitAll()
         .requestMatchers("/api/v1/users/**").authenticated()
+        .requestMatchers(HttpMethod.PATCH,"/api/v1/users/me/newName").authenticated()
         .anyRequest().permitAll()
       );
 
-    // 👇 Aquí el filtro NO será null porque Spring lo inyecta
     http.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
 
     return http.build();

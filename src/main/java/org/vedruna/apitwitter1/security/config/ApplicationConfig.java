@@ -7,6 +7,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -37,24 +38,18 @@ public class ApplicationConfig {
     @Bean
     public UserDetailsService userDetailsService() {
         return username -> {
-            // Asegúrate de que tu repositorio devuelve Optional<User>
-            User u = userRepository.findByUsername(username)
+            var u = userRepository.findByUsername(username)
                     .orElseThrow(() -> new UsernameNotFoundException("User not found: " + username));
 
-            // Autoridad desde tu rol; si siempre es USER, fija "ROLE_USER"
-            String roleName = (u.getUserRol() != null && u.getUserRol().getRolName() != null)
-                    ? "ROLE_" + u.getUserRol().getRolName()
-                    : "ROLE_USER";
+            
+            var authorities = java.util.Collections.<GrantedAuthority>emptyList();
 
-            return org.springframework.security.core.userdetails.User
-                    .withUsername(u.getUsername())   // o u.getEmail() si autenticas por email
-                    .password(u.getPassword())       // BCrypt ya guardado
-                    .authorities(roleName)           // al menos una autoridad
-                    .accountExpired(false)
-                    .accountLocked(false)
-                    .credentialsExpired(false)
-                    .disabled(false)
-                    .build();
+            return new org.springframework.security.core.userdetails.User(
+                    u.getUsername(),
+                    u.getPassword(),
+                    true, true, true, true,
+                    authorities
+            );
         };
     }
 

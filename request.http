@@ -27,6 +27,10 @@ Content-Type: application/json
 	"password": "Abcd"
 }
 
+### Actualizar el username del usuario autenticado
+PATCH http://localhost:8080/api/v1/users/me/newName?newName=NuevoNombre
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOjIsInVzZXJuYW1lIjoiUm9kcnlnbyBHb2VlZWVlZXMiLCJzdWIiOiJSb2RyeWdvIEdvZWVlZWVlcyIsImlhdCI6MTc2MTU2MDY2MywiZXhwIjoxNzYxNTYyMTAzfQ.a3ajyfxGv4csq_lnCdEkAdqdKPm5tLubIv5duuuQXSQ
+
 
 ### Insertar un nuevo jugador
 POST http://localhost:8080/api/v1/players/

@@ -7,6 +7,7 @@ import org.vedruna.apitwitter1.persistance.model.User;
 import org.vedruna.apitwitter1.persistance.repository.UserRepository;
 import org.vedruna.apitwitter1.service.UserService;
 
+import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -30,6 +31,13 @@ public class UserServiceImpl implements UserService{
     @Override
     public Page<User> getUsersByNameStartingWith(String name, Pageable pageable) {
         return userRepository.findUserByUsernameStartingWith(name, pageable);
+    }
+
+
+    @Override
+    @Transactional
+    public void updateUserName(String username, String newUsername) {
+        userRepository.updateDescription(username, newUsername);
     }
     
 }

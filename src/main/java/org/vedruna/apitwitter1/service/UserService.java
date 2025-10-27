@@ -9,5 +9,7 @@ public interface UserService {
     Page<User> getAllUsers(Pageable pageable);
 
     Page<User> getUsersByNameStartingWith(String name, Pageable pageable);
+
+    void updateUserName(String username, String newUsername);
     
 }
