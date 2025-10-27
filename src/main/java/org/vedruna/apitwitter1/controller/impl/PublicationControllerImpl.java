@@ -27,5 +27,13 @@ public class PublicationControllerImpl implements PublicationController{
                 .map(f -> publicationConverter.toDto(f))
         );
     }
+
+    @Override
+    public ResponseEntity<Page<PublicationDto>> getAllPublications(Pageable pageable) {
+        return ResponseEntity.ok(
+            publicationService.getAllPublications(pageable)
+                .map(f -> publicationConverter.toDto(f))
+        );
+    }
     
 }

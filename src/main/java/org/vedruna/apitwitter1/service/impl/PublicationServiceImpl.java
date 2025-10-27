@@ -22,5 +22,11 @@ public class PublicationServiceImpl implements PublicationService{
     public Page<Publication> getAllPublicationsFromUser(Integer userId, Pageable pageable) {
         return publicationRepository.findPulicationsByUserAuthor_UserId(userId, pageable);
     }
+
+
+    @Override
+    public Page<Publication> getAllPublications(Pageable pageable) {
+        return publicationRepository.findAll(pageable);
+    }
     
 }

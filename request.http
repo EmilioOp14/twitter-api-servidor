@@ -7,13 +7,16 @@ GET http://localhost:8080/api/v1/users/name?q=eo
 ### Obtener publicaciones por id
 GET http://localhost:8080/api/v1/publications/1
 
+### Obtener todas las publicaciones
+GET http://localhost:8080/api/v1/publications/
+
 ### Registrar un nuevo usuario
 POST http://localhost:8080/auth/register
 Content-Type: application/json
 
 {
 	"username": "Rodrygo Goeeeeees",
-	"email": "ED",
+	"email": "abcd@gmail.com",
 	"password": "Abcd",
 	"rol": "USER"
 }
@@ -28,21 +31,21 @@ Content-Type: application/json
 }
 
 ### Actualizar el username del usuario autenticado
-PATCH http://localhost:8080/api/v1/users/me/newName?newName=NuevoNombre
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOjIsInVzZXJuYW1lIjoiUm9kcnlnbyBHb2VlZWVlZXMiLCJzdWIiOiJSb2RyeWdvIEdvZWVlZWVlcyIsImlhdCI6MTc2MTU2MDY2MywiZXhwIjoxNzYxNTYyMTAzfQ.a3ajyfxGv4csq_lnCdEkAdqdKPm5tLubIv5duuuQXSQ
+PATCH http://localhost:8080/api/v1/users/me/newName?newName=Paquito
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6IlJvZHJ5Z28gR29lZWVlZWVzIiwidXNlcklkIjozLCJzdWIiOiJSb2RyeWdvIEdvZWVlZWVlcyIsImlhdCI6MTc2MTU4NjczNCwiZXhwIjoxNzYxNTg4MTc0fQ.6_PNUR2w3bIqBF3E-BJr9PwuM-1l7upMPrEuplxLUfc
 
 
-### Insertar un nuevo jugador
-POST http://localhost:8080/api/v1/players/
-Content-Type: application/json
+### Obtener todos los usuarios que sigue un usuario
+GET http://localhost:8080/api/v1/follows/eordunap/following
 
-{
-	"playerName": "Rodrygo Goeeeeees",
-	"playerPosition": "ED",
-	"playerBirthDate": "2001-01-09",
-	"playerTeam": "Real Madrid",
-	"countryName": "Brazil"
-}
+### Obtener todos los usuarios que siguen a un usuario
+GET http://localhost:8080/api/v1/follows/NuevoNombre/followers
+
+
+
+
+
+
 
 ### Editar la nacionalidad del jugador por id
 PATCH http://localhost:8080/api/v1/players/change_nationality/31

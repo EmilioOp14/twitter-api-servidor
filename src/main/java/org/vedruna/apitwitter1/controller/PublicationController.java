@@ -11,6 +11,9 @@ import org.vedruna.apitwitter1.controller.dto.PublicationDto;
 @RequestMapping("api/v1/publications")
 public interface PublicationController {
 
+    @GetMapping("/")
+    public ResponseEntity<Page<PublicationDto>> getAllPublications(Pageable pageable);
+
     @GetMapping("/{id}")
     public ResponseEntity<Page<PublicationDto>> getPublication(@PathVariable("id") Integer id, Pageable pageable);
     

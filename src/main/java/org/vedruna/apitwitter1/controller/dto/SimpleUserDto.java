@@ -8,7 +8,6 @@ public class SimpleUserDto {
     Integer userId;
     String email;
     String username;
-    String roleName;
 
     // Opcional: IDs de publicaciones o seguidores (para evitar anidación profunda)
     // private List<Integer> publicationIds;

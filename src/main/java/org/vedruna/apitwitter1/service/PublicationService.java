@@ -7,5 +7,7 @@ import org.vedruna.apitwitter1.persistance.model.Publication;
 public interface PublicationService {
 
     Page<Publication> getAllPublicationsFromUser(Integer userId, Pageable pageable);
+
+    Page<Publication> getAllPublications(Pageable pageable);
     
 }

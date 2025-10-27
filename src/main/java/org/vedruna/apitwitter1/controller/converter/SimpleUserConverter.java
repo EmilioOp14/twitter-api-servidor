@@ -10,7 +10,6 @@ import org.vedruna.apitwitter1.persistance.model.User;
 public interface SimpleUserConverter {
 
     // Convierte de entidad User a DTO
-    @Mapping(target = "roleName", source = "userRol.rolName")
     SimpleUserDto toDto(User user);
 
     // Convierte de DTO a entidad User
