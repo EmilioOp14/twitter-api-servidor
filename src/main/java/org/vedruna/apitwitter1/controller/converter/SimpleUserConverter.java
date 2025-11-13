@@ -4,6 +4,8 @@ package org.vedruna.apitwitter1.controller.converter;
 import org.mapstruct.*;
 import org.vedruna.apitwitter1.controller.dto.SimpleUserDto;
 import org.vedruna.apitwitter1.persistance.model.User;
+import org.vedruna.apitwitter1.security.auth.model.LoginRequest;
+import org.vedruna.apitwitter1.security.auth.model.RegisterRequest;
 
 
 @Mapper(componentModel = "spring")
@@ -19,5 +21,10 @@ public interface SimpleUserConverter {
     @Mapping(target = "followingList", ignore = true)
     @Mapping(target = "followersList", ignore = true)
     User toEntity(SimpleUserDto dto);
+
+
+    User loginToEntity(LoginRequest dto);
+
+    User registerToEntity(RegisterRequest dto);
 }
 

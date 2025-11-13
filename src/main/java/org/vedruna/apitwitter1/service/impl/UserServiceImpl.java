@@ -39,5 +39,11 @@ public class UserServiceImpl implements UserService{
     public void updateUserName(String username, String newUsername) {
         userRepository.updateDescription(username, newUsername);
     }
+
+
+    @Override
+    public User getUserByUsername(String username) {
+        return userRepository.findByUsername(username).orElseThrow(() -> new IllegalStateException("No existe el usuario con username: " + username + ". Sementalo primero."));
+    }
     
 }

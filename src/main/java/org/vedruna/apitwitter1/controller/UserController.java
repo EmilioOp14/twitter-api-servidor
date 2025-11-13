@@ -22,6 +22,10 @@ public interface UserController {
     @GetMapping("/name")
     public ResponseEntity<Page<SimpleUserDto>> getUsersByNameStartingWith(@RequestParam("q") String prefix, Pageable pageable);
 
+    @GetMapping("/me")
+    public ResponseEntity<SimpleUserDto> getMe(@AuthenticationPrincipal UserDetails me);
+
+
     @PatchMapping("/me/newName")
     public ResponseEntity<Void> updateUserName(@RequestParam("newName") String newName, @AuthenticationPrincipal UserDetails me);
 

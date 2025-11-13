@@ -36,6 +36,8 @@ CREATE TABLE IF NOT EXISTS `social_network`.`users` (
   `email` VARCHAR(255) NOT NULL,
   `password` VARCHAR(255) NOT NULL,
   `username` VARCHAR(255) NOT NULL,
+  `description` TEXT,
+  `create_date` DATE NOT NULL,
   `role_id` INT NOT NULL,
   PRIMARY KEY (`user_id`),
   UNIQUE INDEX `UK_6dotkott2kjsp8vw4d0m25fb7` (`email` ASC) VISIBLE,

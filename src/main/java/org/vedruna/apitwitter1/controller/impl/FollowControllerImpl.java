@@ -3,6 +3,8 @@ package org.vedruna.apitwitter1.controller.impl;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RestController;
 import org.vedruna.apitwitter1.controller.FollowController;
@@ -21,12 +23,14 @@ public class FollowControllerImpl implements FollowController{
     SimpleUserConverter simpleUserConverter;
     
     @Override
-    public ResponseEntity<Page<SimpleUserDto>> getAllFollowingByUsername(String username, Pageable pageable) {
+    public ResponseEntity<Page<SimpleUserDto>> getAllFollowingByUsername(String username, Pageable pageable, @AuthenticationPrincipal UserDetails me) {
         return ResponseEntity.ok(followService.getAllFollowingByUsername(username, pageable).map(simpleUserConverter::toDto));
     }
 
     @Override
-    public ResponseEntity<Page<SimpleUserDto>> getAllFollowersByUsername(String username, Pageable pageable) {
+    public ResponseEntity<Page<SimpleUserDto>> getAllFollowersByUsername(String username, Pageable pageable, @AuthenticationPrincipal UserDetails me) {
+
+
         return ResponseEntity.ok(followService.getAllFollowersByUsername(username, pageable).map(simpleUserConverter::toDto));
     }
     

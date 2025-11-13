@@ -47,6 +47,12 @@ public class UserControllerImpl implements UserController{
         return ResponseEntity.noContent().build();
     }
 
+    @Override
+    public ResponseEntity<SimpleUserDto> getMe(UserDetails me) {
+        User user = userService.getUserByUsername(me.getUsername());
+        return ResponseEntity.ok(simpleUserConverter.toDto(user));
+    }
+
 }
     
 

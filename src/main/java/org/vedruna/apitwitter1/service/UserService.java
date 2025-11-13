@@ -10,6 +10,8 @@ public interface UserService {
 
     Page<User> getUsersByNameStartingWith(String name, Pageable pageable);
 
+    User getUserByUsername(String username);
+
     void updateUserName(String username, String newUsername);
     
 }

@@ -10,4 +10,11 @@ public interface PublicationConverter {
     
     @Mapping(target = "userAuthor", source = "publication.userAuthor")
     PublicationDto toDto(Publication publication);
+
+    // DTO -> Entity (creación o update controlado desde servicio)
+    @Mapping(target = "publicationId", ignore = true)       // el id lo pone la BD
+    @Mapping(target = "userAuthor", ignore = true)          // lo establece el servicio según el username
+    @Mapping(target = "creationDateTime", ignore = true)    // lo pone Hibernate/BD
+    @Mapping(target = "editDateTime", ignore = true)        // lo pone Hibernate en update
+    Publication toEntity(PublicationDto publicationDto);
 }
